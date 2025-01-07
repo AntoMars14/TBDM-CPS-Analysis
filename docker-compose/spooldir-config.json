@@ -1,0 +1,17 @@
+{
+  "name": "spooldir-csv-source",
+  "config": {
+    "connector.class": "com.github.jcustenborder.kafka.connect.spooldir.SpoolDirCsvSourceConnector",
+    "tasks.max": "1",
+    "input.path": "/tmp/temp/original-csv",
+    "input.file.pattern": ".*\\.csv",
+    "error.path": "/tmp/temp/error-csv",
+    "finished.path": "/tmp/temp/finished-csv",
+    "halt.on.error": "false",
+    "topic": "cps-machine-parameters",
+    "schema.generation.enabled": "true",
+    "csv.first.row.as.header": "true",
+    "key.schema": "{\"name\":\"com.example.parameters.MachineParameterKey\",\"type\":\"STRUCT\",\"isOptional\":false,\"fieldSchemas\":{\"id\":{\"type\":\"STRING\",\"isOptional\":false}}}",
+    "value.schema": "{\"name\":\"com.example.parameters.MachineParameterValue\",\"type\":\"STRUCT\",\"isOptional\":false,\"fieldSchemas\":{\"id\":{\"type\":\"STRING\",\"isOptional\":false},\"id_macchina\":{\"type\":\"STRING\",\"isOptional\":true},\"valore\":{\"type\":\"STRING\",\"isOptional\":true},\"data_registrazione\":{\"type\":\"STRING\",\"isOptional\":true},\"createdAt\":{\"type\":\"STRING\",\"isOptional\":true},\"updatedAt\":{\"type\":\"STRING\",\"isOptional\":true},\"nome_parametro\":{\"type\":\"STRING\",\"isOptional\":true},\"tipo_dato\":{\"type\":\"STRING\",\"isOptional\":true}}}"
+  }
+}
