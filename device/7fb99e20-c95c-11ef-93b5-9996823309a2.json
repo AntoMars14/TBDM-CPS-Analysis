@@ -1,0 +1,161 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : true
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "c88e9560-c957-11ef-b2b3-b34052d40660"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "7fb99e20-c95c-11ef-93b5-9996823309a2"
+    },
+    "label" : "",
+    "name" : "Gateway",
+    "softwareId" : null,
+    "type" : "default"
+  },
+  "credentials" : {
+    "credentialsId" : "vol44bXgq5DsegDFR10Q",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "DEVICE",
+      "id" : "7fb99e20-c95c-11ef-93b5-9996823309a2"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "c05aca60-d03e-11ef-8baa-7b2634243828"
+    },
+    "type" : "Created",
+    "typeGroup" : "COMMON",
+    "version" : 77
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1736935305855,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[]",
+      "key" : "inactive_connectors",
+      "lastUpdateTs" : 1736031336495,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1736935305381,
+      "longValue" : 1736935305381,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1736931738208,
+      "longValue" : 1736931737249,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastConnectTime",
+      "lastUpdateTs" : 1736931322805,
+      "longValue" : 1736931322804,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastDisconnectTime",
+      "lastUpdateTs" : 1736617093023,
+      "longValue" : 1736617093023,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "RemoteLoggingLevel",
+      "lastUpdateTs" : 1735858628225,
+      "longValue" : null,
+      "strValue" : "DEBUG"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[]",
+      "key" : "active_connectors",
+      "lastUpdateTs" : 1736935439457,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"host\":\"host.docker.internal\",\"port\":1883,\"remoteShell\":false,\"remoteConfiguration\":true,\"checkConnectorsConfigurationInSeconds\":60,\"statistics\":{\"enable\":true,\"statsSendPeriodInSeconds\":60,\"commands\":[]},\"maxPayloadSizeBytes\":8196,\"minPackSendDelayMS\":50,\"minPackSizeToSend\":500,\"handleDeviceRenaming\":true,\"checkingDeviceActivity\":{\"checkDeviceInactivity\":false,\"inactivityTimeoutSeconds\":300,\"inactivityCheckPeriodSeconds\":10},\"security\":{\"type\":\"accessToken\",\"accessToken\":\"vol44bXgq5DsegDFR10Q\"},\"qos\":1,\"reportStrategy\":{\"type\":\"ON_RECEIVED\"},\"ts\":1735858628219}",
+      "key" : "general_configuration",
+      "lastUpdateTs" : 1735858628225,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"enabled\":false,\"serverPort\":9595,\"keepAliveTimeMs\":10001,\"keepAliveTimeoutMs\":5000,\"keepAlivePermitWithoutCalls\":true,\"maxPingsWithoutData\":0,\"minTimeBetweenPingsMs\":10000,\"minPingIntervalWithoutDataMs\":5000,\"ts\":1735858628219}",
+      "key" : "grpc_configuration",
+      "lastUpdateTs" : 1735858628225,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"version\":1,\"disable_existing_loggers\":false,\"formatters\":{\"LogFormatter\":{\"class\":\"logging.Formatter\",\"format\":\"%(asctime)s - |%(levelname)s| - [%(filename)s] - %(module)s - %(funcName)s - %(lineno)d - %(message)s\",\"datefmt\":\"%Y-%m-%d %H:%M:%S\"}},\"handlers\":{\"consoleHandler\":{\"class\":\"logging.StreamHandler\",\"formatter\":\"LogFormatter\",\"level\":0,\"stream\":\"ext://sys.stdout\"},\"databaseHandler\":{\"class\":\"thingsboard_gateway.tb_utility.tb_handler.TimedRotatingFileHandler\",\"formatter\":\"LogFormatter\",\"filename\":\"./logs/database.log\",\"backupCount\":1,\"encoding\":\"utf-8\"},\"serviceHandler\":{\"class\":\"thingsboard_gateway.tb_utility.tb_handler.TimedRotatingFileHandler\",\"formatter\":\"LogFormatter\",\"filename\":\"./logs/service.log\",\"backupCount\":7,\"interval\":3,\"when\":\"D\",\"encoding\":\"utf-8\"},\"connectorHandler\":{\"class\":\"thingsboard_gateway.tb_utility.tb_handler.TimedRotatingFileHandler\",\"formatter\":\"LogFormatter\",\"filename\":\"./logs/connector.log\",\"backupCount\":7,\"interval\":3,\"when\":\"D\",\"encoding\":\"utf-8\"},\"converterHandler\":{\"class\":\"thingsboard_gateway.tb_utility.tb_handler.TimedRotatingFileHandler\",\"formatter\":\"LogFormatter\",\"filename\":\"./logs/converter.log\",\"backupCount\":7,\"interval\":3,\"when\":\"D\",\"encoding\":\"utf-8\"},\"tb_connectionHandler\":{\"class\":\"thingsboard_gateway.tb_utility.tb_handler.TimedRotatingFileHandler\",\"formatter\":\"LogFormatter\",\"filename\":\"./logs/tb_connection.log\",\"backupCount\":7,\"interval\":3,\"when\":\"D\",\"encoding\":\"utf-8\"},\"storageHandler\":{\"class\":\"thingsboard_gateway.tb_utility.tb_handler.TimedRotatingFileHandler\",\"formatter\":\"LogFormatter\",\"filename\":\"./logs/storage.log\",\"backupCount\":7,\"interval\":3,\"when\":\"D\",\"encoding\":\"utf-8\"},\"extensionHandler\":{\"class\":\"thingsboard_gateway.tb_utility.tb_handler.TimedRotatingFileHandler\",\"formatter\":\"LogFormatter\",\"filename\":\"./logs/extension.log\",\"backupCount\":7,\"interval\":3,\"when\":\"D\",\"encoding\":\"utf-8\"}},\"loggers\":{\"database\":{\"handlers\":[\"databaseHandler\",\"consoleHandler\"],\"level\":\"DEBUG\",\"propagate\":false},\"service\":{\"handlers\":[\"serviceHandler\",\"consoleHandler\"],\"level\":\"INFO\",\"propagate\":false},\"connector\":{\"handlers\":[\"connectorHandler\",\"consoleHandler\"],\"level\":\"INFO\",\"propagate\":false},\"converter\":{\"handlers\":[\"converterHandler\",\"consoleHandler\"],\"level\":\"INFO\",\"propagate\":false},\"tb_connection\":{\"handlers\":[\"tb_connectionHandler\",\"consoleHandler\"],\"level\":\"INFO\",\"propagate\":false},\"storage\":{\"handlers\":[\"storageHandler\",\"consoleHandler\"],\"level\":\"INFO\",\"propagate\":false},\"extension\":{\"handlers\":[\"extensionHandler\",\"consoleHandler\"],\"level\":\"INFO\",\"propagate\":false}},\"root\":{\"level\":\"ERROR\",\"handlers\":[\"consoleHandler\"]},\"ts\":1735858628219}",
+      "key" : "logs_configuration",
+      "lastUpdateTs" : 1735858628225,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "mode",
+      "lastUpdateTs" : 1735858628225,
+      "longValue" : null,
+      "strValue" : "basic"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "{\"type\":\"memory\",\"read_records_count\":100,\"max_records_count\":100000,\"data_folder_path\":\"./data/\",\"max_file_count\":10,\"max_read_records_count\":10,\"max_records_per_file\":10000,\"data_file_path\":\"./data/data.db\",\"messages_ttl_check_in_hours\":1,\"messages_ttl_in_days\":7,\"ts\":1735858628219}",
+      "key" : "storage_configuration",
+      "lastUpdateTs" : 1735858628225,
+      "longValue" : null,
+      "strValue" : null
+    } ]
+  }
+}

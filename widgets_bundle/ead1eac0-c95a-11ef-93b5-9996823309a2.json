@@ -1,0 +1,22 @@
+{
+  "entityType" : "WIDGETS_BUNDLE",
+  "entity" : {
+    "alias" : "gateway_widgets",
+    "description" : "Widgets to manage ThingsBoard IoT Gateway instances.",
+    "externalId" : null,
+    "id" : {
+      "entityType" : "WIDGETS_BUNDLE",
+      "id" : "ead1eac0-c95a-11ef-93b5-9996823309a2"
+    },
+    "image" : "tb-image;/api/images/system/gateway_widgets_system_bundle_image.png",
+    "name" : "Gateway widgets",
+    "order" : null,
+    "scada" : false,
+    "title" : "Gateway widgets"
+  },
+  "fqns" : [ ],
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
