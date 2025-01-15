@@ -11,7 +11,10 @@
     "topic": "cps-machine-parameters",
     "schema.generation.enabled": "true",
     "csv.first.row.as.header": "true",
+    "csv.trim": "true",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.storage.StringConverter",
     "key.schema": "{\"name\":\"com.example.parameters.MachineParameterKey\",\"type\":\"STRUCT\",\"isOptional\":false,\"fieldSchemas\":{\"id\":{\"type\":\"STRING\",\"isOptional\":false}}}",
-    "value.schema": "{\"name\":\"com.example.parameters.MachineParameterValue\",\"type\":\"STRUCT\",\"isOptional\":false,\"fieldSchemas\":{\"id\":{\"type\":\"STRING\",\"isOptional\":false},\"id_macchina\":{\"type\":\"STRING\",\"isOptional\":true},\"valore\":{\"type\":\"STRING\",\"isOptional\":true},\"data_registrazione\":{\"type\":\"STRING\",\"isOptional\":true},\"createdAt\":{\"type\":\"STRING\",\"isOptional\":true},\"updatedAt\":{\"type\":\"STRING\",\"isOptional\":true},\"nome_parametro\":{\"type\":\"STRING\",\"isOptional\":true},\"tipo_dato\":{\"type\":\"STRING\",\"isOptional\":true}}}"
+    "value.schema": "{\"name\":\"com.example.parameters.MachineParameter\",\"type\":\"STRUCT\",\"isOptional\":false,\"fieldSchemas\":{\"id\":{\"type\":\"STRING\",\"isOptional\":false},\"id_macchina\":{\"type\":\"STRING\",\"isOptional\":false},\"valore\":{\"type\":\"STRING\",\"isOptional\":false},\"data_registrazione\":{\"type\":\"STRING\",\"isOptional\":false},\"createdAt\":{\"type\":\"STRING\",\"isOptional\":false},\"updatedAt\":{\"type\":\"STRING\",\"isOptional\":false},\"nome_parametro\":{\"type\":\"STRING\",\"isOptional\":false},\"tipo_dato\":{\"type\":\"STRING\",\"isOptional\":false}}}"
   }
 }
