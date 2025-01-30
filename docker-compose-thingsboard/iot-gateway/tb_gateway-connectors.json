@@ -1,0 +1,6 @@
+{
+    "type": "kafka",
+    "name": "Kafka Connector",
+    "configuration": "custom_kafka.json",
+    "class": "CustomKafkaConnector"
+}

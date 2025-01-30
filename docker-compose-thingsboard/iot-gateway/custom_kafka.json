@@ -1,0 +1,49 @@
+{
+    "name": "Kafka Connector",
+    "bootstrap.servers": "172.22.0.3:9092",
+    "group.id": "thingsboard-consumer-group",
+    "topics": ["cps-machine-parameters"],
+    "devices": [
+      {
+        "name": "Cps-Device",
+        "deviceType": "default",
+        "converter": "CustomKafkaUplinkConverter",
+        "attributes": [
+          {
+            "type": "string",
+            "key": "id_macchina"
+          }
+        ],
+        "telemetry": [
+          {
+            "type": "string",
+            "key": "id"
+          },
+          {
+            "type": "float",
+            "key": "valore"
+          },
+          {
+            "type": "string",
+            "key": "data_registrazione"
+          },
+          {
+            "type": "string",
+            "key": "createdAt"
+          },
+          {
+            "type": "string",
+            "key": "updatedAt"
+          },
+          {
+            "type": "string",
+            "key": "nome_parametro"
+          },
+          {
+            "type": "string",
+            "key": "tipo_dato"
+          }
+        ]
+      }
+    ]
+  }
