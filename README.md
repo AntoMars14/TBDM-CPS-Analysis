@@ -3,10 +3,16 @@
 ## Table of contents:
 1. [Introduction](#introduction)
 2. [Technologies](#technologies)
-3. [Prerequisites](#prerequisites)
-4. [Installation & Configuration](#installation--configuration)
-5. [Usage](#usage)
-6. [Results](#results)
+4. [Prerequisites](#prerequisites)
+5. [Installation & Configuration](#installation--configuration)
+   
+   I. [Kafka](#kafka)
+   
+   II. [ThingsBoard](#thingsboard)
+   
+   III. [ThingsBoard IoT Gateway](#thingsboard-iot-gateway)
+7. [Usage](#usage)
+8. [Results](#results)
 
 
 
@@ -14,7 +20,7 @@
 ## Introduction
 In the optimization of a dewatering CPS machine, several sensor are used to collect real-time data. The project is about the analysis of a Cyber-Physical System (CPS) data using Big Data Technologies.
 
-This project implements a Big Data system that analyze the data in real-time. The data are published in Kafka using 2 different approaches:
+This project implements a Big Data system that analyze the data in real-time. The data are published in Kafka using the following 2 different approaches.
 #### First approach:
 Uses a Spooldir connector to read data from a csv file and publish them in Kafka.
 #### Second approach:
@@ -95,23 +101,79 @@ ThingsBoard is designed to be:
 - `git clone https://github.com/AntoMars14/TBDM-CPS-Analysis`
 
 ## Installation & Configuration
-### Start up Kafka
-For Windows user, before starting, you need to replace the paths in row 76 and 77 with the absolute path of the folders connect-kafka-jars and connect-kafka-temp.
-
-The jar files of the plugin Spooldir Source are already present in this repository, so you don't need to download the plugin.
+### Kafka
+For Windows user, before starting, you need to replace the paths in row 76 and 77 with the absolute path of the folders `connect-kafka-jars` and `connect-kafka-temp`.
 
 - Go into the directory docker-compose:
   
-  `cd docker-compose`
+  ```
+  cd docker-compose
+  ```
 
 - Start up Kafka:
   
-  `docker-compose up`
+  ```
+  docker-compose up
+  ```
+
+For further information: [Kafka installation guide (using docker)](https://developer.confluent.io/confluent-tutorials/kafka-on-docker/)
+#### First approach (using csv file as producer):
+The jar files of the plugin Spooldir Source are already present in this repository, so you don't need to download the plugin.
+
+- Import in postman the postman collection `KafkaSpoolirSourceConnector.postman_collection.json` present into the folder `docker-compose`
+
+- Create into `docker-compose/connect-kafka-temp` two folders: `error-csv` and `finished-csv` (folder that will contain the processed csv files).
+
 - Check if Spooldir Source connector is available:
 
-  
+  send the request `connector-plugins`
 
-###
+- Send the Spooldir Source connector configuration for our csv file (the configuration is customized for this specific project):
+
+  send the request `post_spooldir_source` (change localhost in the request with your kafka ip address)
+
+It is also possible to verify the status of the Spooldir connector sending the request `connector_spooldir_status`, and delete our Spooldir Source connector configuration for our csv file sending the request `del_file_spooldir_source`. With the request `connector` is possible to get the list of the running connectors.
+
+For further informations: [Spooldir Source Connector Documentation](https://docs.confluent.io/kafka-connectors/spooldir/current/connectors/csv_source_connector.html#spooldir-csv-source-connector)
+
+#### Second approach (using IoT Simulator as producer):
+
+### ThingsBoard 
+Windows users should use docker managed volume for ThingsBoard Database. Create docker volume (for ex. mytb-data) before executing docker run command: Open “Docker Quickstart Terminal”. Execute the following command to create docker volume:
+
+```
+docker volume create mytb-data
+
+docker volume create mytb-logs
+```
+
+- Go into the directory docker-compose-thingsboard(from the root of the project):
+  
+  ```
+  cd docker-compose-thingsboard
+  ```
+
+- Start up ThingsBoard:
+  
+  ```
+  docker-compose up
+  ```
+
+- To stop the container:
+
+  ```
+  docker compose stop mytb
+  ```
+
+- To start the container (after stopping it):
+
+  ```
+  docker compose start mytb
+  ```
+
+For further information: [Thingsboard installation guide (using docker)](https://thingsboard.io/docs/user-guide/install/docker-windows/)
+
+### ThingsBoard IoT Gateway
 
 
 
