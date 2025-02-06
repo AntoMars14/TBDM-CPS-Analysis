@@ -1,6 +1,6 @@
 {
     "name": "Kafka Connector",
-    "bootstrap.servers": "172.22.0.3:9092",
+    "bootstrap.servers": "broker:9092",
     "group.id": "thingsboard-consumer-group",
     "topics": ["cps-machine-parameters"],
     "devices": [

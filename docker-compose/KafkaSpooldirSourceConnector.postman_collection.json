@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "5642f03d-497b-4414-a8cd-99f0bed6dbd0",
+		"name": "KafkaSpooldirSourceConnector",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31463869"
+	},
+	"item": [
+		{
+			"name": "connector",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8083/connectors"
+			},
+			"response": []
+		},
+		{
+			"name": "post_spooldir_source",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"spooldir-csv-source\",\n  \"config\": {\n    \"connector.class\": \"com.github.jcustenborder.kafka.connect.spooldir.SpoolDirCsvSourceConnector\",\n    \"tasks.max\": \"1\",\n    \"input.path\": \"/tmp/temp/original-csv\",\n    \"input.file.pattern\": \".*\\\\.csv\",\n    \"error.path\": \"/tmp/temp/error-csv\",\n    \"finished.path\": \"/tmp/temp/finished-csv\",\n    \"halt.on.error\": \"false\",\n    \"topic\": \"cps-machine-parameters\",\n    \"schema.generation.enabled\": \"true\",\n    \"csv.first.row.as.header\": \"true\",\n    \"csv.separator.char\": \"44\",\n    \"csv.quote.char\": \"34\",\n    \"csv.trim\": \"true\",\n    \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\",\n    \"value.converter\": \"org.apache.kafka.connect.storage.StringConverter\",\n    \"key.schema\": \"{\\\"name\\\":\\\"com.example.parameters.MachineParameterKey\\\",\\\"type\\\":\\\"STRUCT\\\",\\\"isOptional\\\":false,\\\"fieldSchemas\\\":{\\\"id\\\":{\\\"type\\\":\\\"STRING\\\",\\\"isOptional\\\":false}}}\",\n    \"value.schema\": \"{\\\"name\\\":\\\"com.example.parameters.MachineParameter\\\",\\\"type\\\":\\\"STRUCT\\\",\\\"isOptional\\\":false,\\\"fieldSchemas\\\":{\\\"id\\\":{\\\"type\\\":\\\"STRING\\\",\\\"isOptional\\\":false},\\\"id_macchina\\\":{\\\"type\\\":\\\"STRING\\\",\\\"isOptional\\\":false},\\\"valore\\\":{\\\"type\\\":\\\"STRING\\\",\\\"isOptional\\\":false},\\\"data_registrazione\\\":{\\\"type\\\":\\\"STRING\\\",\\\"isOptional\\\":false},\\\"createdAt\\\":{\\\"type\\\":\\\"STRING\\\",\\\"isOptional\\\":false},\\\"updatedAt\\\":{\\\"type\\\":\\\"STRING\\\",\\\"isOptional\\\":false},\\\"nome_parametro\\\":{\\\"type\\\":\\\"STRING\\\",\\\"isOptional\\\":false},\\\"tipo_dato\\\":{\\\"type\\\":\\\"STRING\\\",\\\"isOptional\\\":false}}}\"\n  }\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8083/connectors"
+			},
+			"response": []
+		},
+		{
+			"name": "connector_spooldir_status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8083/connectors/spooldir-csv-source/status"
+			},
+			"response": []
+		},
+		{
+			"name": "del_file_spooldir_source",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"file-sink\",\n    \"config\": {\n        \"connector.class\": \"org.apache.kafka.connect.file.FileStreamSinkConnector\",\n        \"tasks.max\": \"1\",\n        \"file\": \"/tmp/test.sink.txt\",\n        \"key.converter\": \"org.apache.kafka.connect.storage.StringConverter\",\n        \"value.converter\": \"org.apache.kafka.connect.storage.StringConverter\",\n        \"topics\": \"mqtt.echo\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8083/connectors/spooldir-csv-source"
+			},
+			"response": []
+		},
+		{
+			"name": "connector-plugins",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8083/connector-plugins"
+			},
+			"response": []
+		}
+	]
+}
