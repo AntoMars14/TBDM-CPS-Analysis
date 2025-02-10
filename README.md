@@ -147,7 +147,7 @@ docker volume create mytb-data
 docker volume create mytb-logs
 ```
 
-- Go into the directory docker-compose-thingsboard(from the root of the project):
+- Go into the directory `docker-compose-thingsboard` (from the root of the project):
   
   ```
   cd docker-compose-thingsboard
@@ -174,8 +174,111 @@ docker volume create mytb-logs
 For further information: [Thingsboard installation guide (using docker)](https://thingsboard.io/docs/user-guide/install/docker-windows/)
 
 ### ThingsBoard IoT Gateway
+- Use
+  
+- Go into ThingsBoard gateways and select Gateway, then click on launch command and download the configuration file.
+  
+- Go into the directory `docker-compose-thingsboard/iot-gateway` (from the root of the project):
+  
+  ```
+  cd docker-compose-thingsboard/iot-gateway
+  ```
+  
+- Copy the accessToken from the downloaded configuration file, and paste it into the `docker-compose` file in the current folder(at row 26, substituting the one present)
 
+- Start up ThingsBoard:
+  
+  ```
+  docker-compose up
+  ```
 
+For further information: [Thingsboard IoT Gateway installation guide (using docker)](https://thingsboard.io/docs/iot-gateway/install/docker-windows/)
+#### Add custom connector for Kafka in ThingsBoard IoT Gateway
+- Access to a bash shell into the container of the IoT Gateway:
+  
+  ```
+  docker exec -it tb-gateway bash
+  ```
 
+- Install `kafka-python` library in the IoT Gateway (required for the implementation of the custom kafka connector):
+
+  ```
+  pip install kafka-python
+  ```
+
+- Install `pytz` library in the IoT Gateway (required for the implementation of the custom kafka connector):
+
+  ```
+  pip install pytz
+  ```
+
+- Go into the directory `thingsboard_gateway/config`:
+  
+  ```
+  cd thingsboard_gateway/config
+  ```
+
+- Create the kafka connector configuration file:
+  
+  ```
+  touch custom_kafka.json
+  ```
+
+- Edit the file:
+    
+  ```
+  nano custom_kafka.json
+  ```
+  copying and pasting the code from the file `custom_kafka.json` present in the folder `docker-compose-thingsboard/iot-gateway`.
+
+- Add the custom connector to the IoT Gateway editing the file `tb_gateway.json`:
+    
+  ```
+  nano tb_gateway.json
+  ```
+  copying and pasting the code from the file `tb_gateway-connectors.json` present in the folder `docker-compose-thingsboard/iot-gateway`, into the field connectors of the file.
+
+- Return to the root
+- - Go into the directory `thingsboard_gateway/extensions`:
+  
+  ```
+  cd thingsboard_gateway/config
+  ```
+
+- Create the kafka connector folder:
+  
+  ```
+  mkdir kafka
+  ```
+
+- Create the kafka connector implementation and converter files:
+  
+  ```
+  touch custom_kafka_connector.py
+  touch custom_kafka_converter.py
+  ```
+  
+- Edit the files:
+    
+  ```
+  nano custom_kafka_connector.py
+  ```
+
+  ```
+  nano custom_kafka_converter.py
+  ```
+  copying and pasting the code respectively from the files `custom_kafka_connector.py` and `custom_kafka_converter.py` present in the folder `docker-compose-thingsboard/iot-gateway`.
+
+- To apply the changes, activating the custom kafka connector, stop and restart the IoT Gateway:
+
+  ```
+  docker compose stop tb-gateway
+  ```
+  
+  ```
+  docker compose start tb-gateway
+  ```
+
+For further information: [Thingsboard IoT Gateway configuration guide](https://thingsboard.io/docs/iot-gateway/getting-started/) and [IoT Gateway Customization (custom connector)](https://thingsboard.io/docs/iot-gateway/custom/serial-connector/)
 ## Usage
 ## Results
