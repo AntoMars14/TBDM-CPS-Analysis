@@ -29,6 +29,7 @@ class CustomKafkaConnector(Thread, Connector):
             self.consumer = KafkaConsumer(
                 self.__config.get('topics', ['cps-machine-parameters']),
                 bootstrap_servers=self.__config.get('bootstrap.servers', 'broker:29092'),
+                group_id=self.__config.get('group.id', 'thingsboard-consumer-group'),
                 value_deserializer=lambda m: m.decode('utf-8'),
                 auto_offset_reset='earliest',
                 enable_auto_commit=True
