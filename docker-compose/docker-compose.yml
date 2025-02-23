@@ -1,4 +1,4 @@
-version: '2'
+version: '3.8'
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
@@ -73,8 +73,8 @@ services:
       CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components,/usr/share/connect-plugin-jars"
       CONNECT_LOG4J_LOGGERS: org.apache.zookeeper=ERROR,org.I0Itec.zkclient=ERROR,org.reflections=ERROR
     volumes:
-      - "$PWD/connect-kafka-jars:/usr/share/connect-plugin-jars"
-      - "$PWD/connect-kafka-temp:/tmp/temp"
+      - "C:\\Users\\fmars_iuqee7i\\PycharmProjects\\TBDM-CPS-Analysis\\docker-compose\\connect-kafka-jars:/usr/share/connect-plugin-jars"
+      - "C:\\Users\\fmars_iuqee7i\\PycharmProjects\\TBDM-CPS-Analysis\\docker-compose\\connect-kafka-temp:/tmp/temp"
     #extra_hosts:
       #- "mqtt-broker:192.168.205.8"
   ksqldb-server:
@@ -158,6 +158,14 @@ services:
       - KAFKA_CLUSTERS_0_NAME=broker
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=broker:29092
       - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
+  simulator:
+    image: anto1403/json-simulator:1.0.0
+    container_name: simulator
+    volumes:
+      - ./conf:/opt/app/json-data-generator/conf
+    command: java -jar json-data-generator.jar simple_Simulator.json
+    profiles:
+      - iotsimulator
 volumes:
   broker-kafka-data:
     driver: local
