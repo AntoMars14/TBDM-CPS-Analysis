@@ -1,0 +1,14 @@
+{
+    "workflows": [{
+            "workflowName": "cps-simulator",
+            "workflowFilename": "cpsWorkflow.json",
+            "instances" : 1
+        }],
+    "producers": [{
+            "type": "kafka",
+            "broker.server": "broker",
+            "broker.port": 29092,
+            "topic": "cps-machine-parameters",
+            "sync": false
+    }]
+}
