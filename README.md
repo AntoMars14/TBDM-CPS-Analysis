@@ -3,18 +3,20 @@
 ## Table of contents:
 1. [Introduction](#introduction)
 2. [Technologies](#technologies)
-4. [Prerequisites](#prerequisites)
-5. [Installation & Configuration](#installation--configuration)
+3. [Prerequisites](#prerequisites)
+4. [Installation & Configuration](#installation--configuration)
    
    I. [Kafka](#kafka)
+   
+      1. [Csv File](#csv-file)
+   
+      2. [IoT-Simulator](#iot-simulator)
    
    II. [ThingsBoard](#thingsboard)
    
    III. [ThingsBoard IoT Gateway](#thingsboard-iot-gateway)
-
-   IV. [IoT-Simulator](#iot-simulator)
-7. [Usage](#usage)
-8. [Results](#results)
+6. [Usage](#usage)
+7. [Results](#results)
 
 
 
@@ -141,7 +143,10 @@ For Windows user, before starting, you need to replace the paths in row 76 and 7
   ```
 
 For further information: [Kafka installation guide (using docker)](https://developer.confluent.io/confluent-tutorials/kafka-on-docker/)
-#### First approach (using csv file as producer):
+#### Csv File:
+
+#### First approach using csv file as producer
+
 The jar files of the plugin Spooldir Source are already present in this repository, so you don't need to download the plugin.
 
 - Import in postman the postman collection `KafkaSpoolirSourceConnector.postman_collection.json` present into the folder `docker-compose`
@@ -152,31 +157,26 @@ The jar files of the plugin Spooldir Source are already present in this reposito
 
   send the request `connector-plugins`
 
-- Send the Spooldir Source connector configuration for our csv file (the configuration is customized for this specific project):
-
-  send the request `post_spooldir_source` (change localhost in the request with your kafka ip address)
-
-It is also possible to verify the status of the Spooldir connector sending the request `connector_spooldir_status`, and delete our Spooldir Source connector configuration for our csv file sending the request `del_file_spooldir_source`. With the request `connector` is possible to get the list of the running connectors.
-
 For further informations: [Spooldir Source Connector Documentation](https://docs.confluent.io/kafka-connectors/spooldir/current/connectors/csv_source_connector.html#spooldir-csv-source-connector)
 
-#### Second approach (using IoT Simulator as producer):
+#### IoT-Simulator:
+
+#### Second approach using the iot-simulator as producer
+
+The IoT-Simulator is customized, some custom function was added:
+
+- integerString
+- doubleString
+- LongString
+- randomIncrementDouble
+- randomIncrementDoubleString
+- randomIncrementLongString
+
+To see more: https://github.com/AntoMars14/iot-simulator
   
 The configuration files are present into the folder `docker-compose/conf`. The `simple_Simulator.json` is the simulation configuration file and the `cpsWorkflow.json` is the workflow configuration file.
 
-- Go into the directory `docker-compose` (from the root of the project):
-  
-  ```
-  cd docker-compose
-  ```
-
-- Start up the container iotsimulator:
-  
-  ```
-  docker compose --profile iotsimulator up
-  ```
-The iot-simulator will start to produce data an to publish them in Kafka.
-
+For further informations: [IoT-Simulator Documentation](https://github.com/massimocallisto/iot-simulator/blob/master/README.md)
 
 ### ThingsBoard 
 Windows users should use docker managed volume for ThingsBoard Database. Create docker volume (for ex. mytb-data) before executing docker run command: Open “Docker Quickstart Terminal”. Execute the following command to create docker volume:
@@ -198,23 +198,29 @@ docker volume create mytb-logs
   ```
   docker-compose up
   ```
+#### Access to thingsboard ui
 
-- To stop the container:
+The web-application user interface is available at http://localhost:8080 and these are the default credentials:
 
-  ```
-  docker compose stop mytb
-  ```
+- System Administrator: sysadmin@thingsboard.org - password: sysadmin
+    
+- Tenant Administrator: tenant@thingsboard.org - password: tenant
+    
+- Customer User: customer@thingsboard.org - password: customer
 
-- To start the container (after stopping it):
+#### Configure version control in thingsboard and import entities
 
-  ```
-  docker compose start mytb
-  ```
+Login as the tenant administrator, go to 'Advanced features', then 'Version control', and put this repository URL and the main branch into the configuration configs. 
+You can flag 'Read-only' and skip the authentication settings, if you want only to import the data without commiting your modifications.
 
+Click 'Check access' to check the successful verification of the repository. Save your repository settings.
+
+From the commit list, click the 'Restore version' button and choose entities to restore, by default they're all selected(advised), and restore them.
+    
 For further information: [Thingsboard installation guide (using docker)](https://thingsboard.io/docs/user-guide/install/docker-windows/)
 
 ### ThingsBoard IoT Gateway
-- Use
+After have restored all the entities you can start the iot gateway and configure it.
   
 - Go into ThingsBoard gateways and select Gateway, then click on launch command and download the configuration file.
   
@@ -321,4 +327,117 @@ For further information: [Thingsboard IoT Gateway installation guide (using dock
 
 For further information: [Thingsboard IoT Gateway configuration guide](https://thingsboard.io/docs/iot-gateway/getting-started/) and [IoT Gateway Customization (custom connector)](https://thingsboard.io/docs/iot-gateway/custom/serial-connector/)
 ## Usage
+
+### Kafka
+
+- Go into the directory docker-compose:
+  
+  ```
+  cd docker-compose
+  ```
+
+- Start up Kafka:
+  
+  ```
+  docker-compose up
+  ```
+  
+Kafka is now active.
+  
+- To stop Kafka:
+  
+  ```
+  docker stop
+  ```
+
+#### First approach: Csv File (SpoolDir Connector)
+To start reading the csv file and publish the data on Kafka do the following step.
+
+- Send the Spooldir Source connector configuration for our csv file (the configuration is customized for this specific project):
+
+  send the request `post_spooldir_source` (change localhost in the request with your kafka ip address)
+
+It is also possible to verify the status of the Spooldir connector sending the request `connector_spooldir_status`, and delete our Spooldir Source connector configuration for our csv file sending the request `del_file_spooldir_source`. With the request `connector` is possible to get the list of the running connectors.
+
+#### Second approach: IoT-Simulator
+
+Start the IoT-Simulator container do the following steps.
+
+- Go into the directory `docker-compose` (from the root of the project):
+  
+  ```
+  cd docker-compose
+  ```
+
+- Start up the container iotsimulator:
+  
+  ```
+  docker compose --profile iotsimulator up
+  ```
+The iot-simulator will start to produce data an to publish them in Kafka.
+
+
+- To stop simulator container:
+  
+  ```
+  docker stop simulator
+  ```
+
+### ThingsBoard
+
+To start thingsboard container do the following steps.
+
+- Go into the directory `docker-compose-thingsboard` (from the root of the project):
+  
+  ```
+  cd docker-compose-thingsboard
+  ```
+
+- Start up ThingsBoard:
+  
+  ```
+  docker-compose up
+  ```
+
+Thingsboard is now active.
+
+- To stop the container:
+
+  ```
+  docker compose stop mytb
+  ```
+
+- To start the container (after stopping it):
+
+  ```
+  docker compose start mytb
+  ```
+
+### ThingsBoard IoT-Gateway
+
+To start thingsboard iot-gateway container do the following steps.
+
+- Go into the directory `docker-compose-thingsboard/iot-gateway` (from the root of the project):
+  
+  ```
+  cd docker-compose-thingsboard/iot-gateway
+  ```
+  
+- Start up ThingsBoard IoT-Gateway:
+  
+  ```
+  docker-compose up
+  ```
+  
+The iot-gateway is now active.
+
+- To stop and restart the IoT Gateway:
+
+  ```
+  docker compose stop tb-gateway
+  ```
+  
+  ```
+  docker compose start tb-gateway
+  ```
 ## Results
