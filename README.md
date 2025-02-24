@@ -47,6 +47,8 @@ And all this functionality is provided in a distributed, highly scalable, elasti
 The ThingsBoard IoT Gateway is an open-source solution that allows you to integrate devices connected to legacy and third-party systems with ThingsBoard. For example, you can extract data from devices that are connected to external MQTT brokers, OPC-UA servers, Sigfox Backend, Modbus slaves or CAN nodes.
 ### Architecture
 
+![thingsboardiotgateway](https://github.com/AntoMars14/TBDM-CPS-Analysis/blob/images/thingsboardiotgateway.png?raw=true)
+
 The IoT Gateway is a software component that is designed to run on a Linux based microcomputers that support Python 3.7+. The main components of ThingsBoard IoT Gateway are listed below.
 
 #### Connector
@@ -92,6 +94,8 @@ With ThingsBoard, you are able to:
 - Push device data to other systems.
 
 #### Architecture
+
+![thingsboardarchitecture](https://github.com/AntoMars14/TBDM-CPS-Analysis/blob/images/thingsboardarchitecture.png?raw=true)
 
 ThingsBoard is designed to be:
 
