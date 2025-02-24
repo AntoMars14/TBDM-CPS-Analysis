@@ -485,3 +485,20 @@ The iot-gateway is now active.
   docker compose start tb-gateway
   ```
 ## Results
+
+The project objectives are met. The data produced by the iot-simulator or extracted from the csv file is published on kafka. Then the thingsboard iot-gateway reads and consumes data from kafka and forwards it to thingsboard. In thingsboard we managed the visualization of the data in the dashboard and the alarms.
+
+In the following images of this section are present the dashboard realized for this project to analyze the data from the CPS device and the alarms visualized into the dashboard.
+
+### Dashboard
+
+In the following 2 figures are present all the widget used to visualize the data form the CPS device. The main widget used are time series charts, line charts, point charts, cards and card charts.
+![thingsboarddashboard](https://github.com/AntoMars14/TBDM-CPS-Analysis/blob/images/thingsboarddashboard.png?raw=true)
+
+![thingsboarddashboard1](https://github.com/AntoMars14/TBDM-CPS-Analysis/blob/images/thingsboarddashboard1.png?raw=true)
+
+In the following figure are visible the widget used into the dashboard to monitor the alarms.
+
+![thingsboarddashboardalarms](https://github.com/AntoMars14/TBDM-CPS-Analysis/blob/images/thingsboarddashboardalarms.png?raw=true)
+
+### Alarms
