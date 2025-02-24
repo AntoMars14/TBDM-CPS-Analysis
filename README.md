@@ -22,7 +22,7 @@
 
 
 ## Introduction
-In the optimization of a dewatering CPS machine, several sensor are used to collect real-time data. The objective of this project is about the analysis of a Cyber-Physical System (CPS) data using Big Data Technologies.
+In the optimization of a dewatering CPS machine, several sensor are used to collect real-time data. This project is about the analysis of a Cyber-Physical System (CPS) data using Big Data Technologies. The objectives of this project are to study an IoT platform for handling the data of the CPS, to study the framework (ThingsBoard), its features, dashboard and alarms.
 
 This project implements a Big Data system that analyze the data in real-time. The data are published in Kafka using the following 2 different approaches.
 #### First approach:
