@@ -142,6 +142,8 @@ For Windows user, before starting, you need to replace the paths in row 76 and 7
   docker-compose up
   ```
 
+Kafka web-application user interface is available at http://localhost:7777.
+
 For further information: [Kafka installation guide (using docker)](https://developer.confluent.io/confluent-tutorials/kafka-on-docker/)
 #### Csv File:
 
@@ -171,8 +173,6 @@ The IoT-Simulator is customized, some custom function was added:
 - randomIncrementDouble
 - randomIncrementDoubleString
 - randomIncrementLongString
-
-To see more: https://github.com/AntoMars14/iot-simulator
   
 The configuration files are present into the folder `docker-compose/conf`. The `simple_Simulator.json` is the simulation configuration file and the `cpsWorkflow.json` is the workflow configuration file.
 
