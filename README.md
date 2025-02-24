@@ -11,6 +11,8 @@
    II. [ThingsBoard](#thingsboard)
    
    III. [ThingsBoard IoT Gateway](#thingsboard-iot-gateway)
+
+   IV. [IoT-Simulator](#iot-simulator)
 7. [Usage](#usage)
 8. [Results](#results)
 
@@ -105,6 +107,19 @@ ThingsBoard is designed to be:
 - customizable: adding new functionality is easy with customizable widgets and rule engine nodes.
 - durable: never lose your data.
 
+### [IoT-Simulator](https://github.com/massimocallisto/iot-simulator)
+
+IoT data simulator that generates data in real-time.
+
+#### Architecture
+The Generator has the following basic architecture:
+
+- `JsonDataGenerator` - The main application that loads configurations and runs simulations.
+- `Simulation Configuration` - A json file that represents your over all simulation you would like to run.
+- `Workflow Definitions` - Json files that define a workflow that is run by your Simulation.
+
+When you start the JsonDataGenerator, you specify your Simulation Configuration which also references one or many Workflow Definitions. The Simulation is loaded and the Workflows are created within the application and each workflow is started within its own thread. Json events are generated and sent to the defined Producers.
+
 ## Prerequisites
 - `Docker`
 - `git clone https://github.com/AntoMars14/TBDM-CPS-Analysis`
@@ -146,6 +161,22 @@ It is also possible to verify the status of the Spooldir connector sending the r
 For further informations: [Spooldir Source Connector Documentation](https://docs.confluent.io/kafka-connectors/spooldir/current/connectors/csv_source_connector.html#spooldir-csv-source-connector)
 
 #### Second approach (using IoT Simulator as producer):
+  
+The configuration files are present into the folder `docker-compose/conf`. The `simple_Simulator.json` is the simulation configuration file and the `cpsWorkflow.json` is the workflow configuration file.
+
+- Go into the directory `docker-compose` (from the root of the project):
+  
+  ```
+  cd docker-compose
+  ```
+
+- Start up the container iotsimulator:
+  
+  ```
+  docker compose --profile iotsimulator up
+  ```
+The iot-simulator will start to produce data an to publish them in Kafka.
+
 
 ### ThingsBoard 
 Windows users should use docker managed volume for ThingsBoard Database. Create docker volume (for ex. mytb-data) before executing docker run command: Open “Docker Quickstart Terminal”. Execute the following command to create docker volume:
