@@ -198,6 +198,8 @@ docker volume create mytb-logs
   ```
   docker-compose up
   ```
+
+For further information: [Thingsboard installation guide (using docker)](https://thingsboard.io/docs/user-guide/install/docker-windows/)
 #### Access to thingsboard ui
 
 The web-application user interface is available at http://localhost:8080 and these are the default credentials:
@@ -215,9 +217,13 @@ You can flag 'Read-only' and skip the authentication settings, if you want only 
 
 Click 'Check access' to check the successful verification of the repository. Save your repository settings.
 
+![versioncontrol](https://github.com/AntoMars14/TBDM-CPS-Analysis/blob/images/versioncontrol.png?raw=true)
+
 From the commit list, click the 'Restore version' button and choose entities to restore, by default they're all selected(advised), and restore them.
-    
-For further information: [Thingsboard installation guide (using docker)](https://thingsboard.io/docs/user-guide/install/docker-windows/)
+
+![versioncontrolrestore](https://github.com/AntoMars14/TBDM-CPS-Analysis/blob/images/versioncontrolrestore.png?raw=true)
+
+For further information: [Version Control](https://thingsboard.io/docs/user-guide/version-control/)
 
 ### ThingsBoard IoT Gateway
 After have restored all the entities you can start the iot gateway and configure it.
@@ -412,6 +418,44 @@ Thingsboard is now active.
   ```
   docker compose start mytb
   ```
+
+#### Create dashboard
+
+In thingsboard is possible to create dashboard to visualize the data. In a dashboard you can add widgets that can be charts, cards, alarm widgets, etc.
+
+- To create a dashboard go to dashboard page, select + and create new dashboard.
+
+![createdashboard](https://github.com/AntoMars14/TBDM-CPS-Analysis/blob/images/createdashboard.png?raw=true)
+
+- Fill the fields and confirm the creation.
+
+#### Add widget to the dashboard
+- Select the created dashboard, and click on edit.
+
+- Select add widget and choose the widget bundle and the widget to add to the dashboard.
+  
+![thingsboarddashboardaddwidget](https://github.com/AntoMars14/TBDM-CPS-Analysis/blob/images/thingsboarddashboardaddwidget.png?raw=true)
+
+- Configure the widget adding the datasource, the key and all the other optional settings.
+
+![thingsboarddashboardwidgetconf](https://github.com/AntoMars14/TBDM-CPS-Analysis/blob/images/thingsboarddashboardwidgetconf.png?raw=true)
+
+For further information: [Dashboard Usage](https://thingsboard.io/docs/user-guide/dashboards/)
+
+#### Add an alarm
+
+In thingsboard is also possible to add alarms (alarm rules) to a specific device profile and visualize them into the dashboard.
+
+- To add an alarm rule, go into the device profile page and select the profile associated with your device. in our case the profile associated with the CPS device is default.
+
+![deviceprofiles](https://github.com/AntoMars14/TBDM-CPS-Analysis/blob/images/deviceprofiles.png?raw=true)
+
+- Then click on alarm rules, add your alarm condition and save clicking on add alarm rule.
+
+![alarmcondition](https://github.com/AntoMars14/TBDM-CPS-Analysis/blob/images/alarmcondition.png?raw=true)
+
+
+For further information: [Alarm Usage](https://thingsboard.io/docs/user-guide/alarms/)
 
 ### ThingsBoard IoT-Gateway
 
