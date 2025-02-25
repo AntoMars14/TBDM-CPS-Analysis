@@ -1,5 +1,10 @@
 # TBDM-CPS-Analysis
 
+### Team
+- Alessio Gesuelli - alessio.gesuelli@studenti.unicam.it
+- Mattia Giaccaglia - mattia.giaccaglia@studenti.unicam.it
+- Antonio Marseglia - antonio.marseglia@studenti.unicam.it
+
 ## Table of contents:
 1. [Introduction](#introduction)
 2. [Technologies](#technologies)
