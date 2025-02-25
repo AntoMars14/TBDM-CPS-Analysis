@@ -4,10 +4,13 @@
     "additionalInfo" : null,
     "configuration" : null,
     "debugMode" : false,
-    "externalId" : null,
+    "externalId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "c8df9b90-c957-11ef-b2b3-b34052d40660"
+    },
     "firstRuleNodeId" : {
       "entityType" : "RULE_NODE",
-      "id" : "c8f1c400-c957-11ef-b2b3-b34052d40660"
+      "id" : "773bc1a1-d821-11ef-ba39-7b2634243828"
     },
     "id" : {
       "entityType" : "RULE_CHAIN",
@@ -46,19 +49,26 @@
     "firstNodeIndex" : 6,
     "nodes" : [ {
       "additionalInfo" : {
+        "description" : null,
         "layoutX" : 824,
         "layoutY" : 156
       },
       "configuration" : {
-        "defaultTTL" : 0
+        "defaultTTL" : 0,
+        "skipLatestPersistence" : false,
+        "useServerTs" : null
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
-      "debugSettings" : null,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737496832535,
+        "failuresEnabled" : false
+      },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "c8f01650-c957-11ef-b2b3-b34052d40660"
+        "id" : "773b4c70-d821-11ef-ba39-7b2634243828"
       },
       "name" : "Save Timeseries",
       "queueName" : null,
@@ -82,7 +92,7 @@
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "c8f08b80-c957-11ef-b2b3-b34052d40660"
+        "id" : "773b7380-d821-11ef-ba39-7b2634243828"
       },
       "name" : "Save Client Attributes",
       "queueName" : null,
@@ -91,6 +101,7 @@
       "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
     }, {
       "additionalInfo" : {
+        "description" : null,
         "layoutX" : 347,
         "layoutY" : 149
       },
@@ -99,11 +110,15 @@
       },
       "configurationVersion" : 0,
       "createdTime" : 0,
-      "debugSettings" : null,
+      "debugSettings" : {
+        "allEnabled" : false,
+        "allEnabledUntil" : 1737496751637,
+        "failuresEnabled" : false
+      },
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "c8f0b290-c957-11ef-b2b3-b34052d40660"
+        "id" : "773b7381-d821-11ef-ba39-7b2634243828"
       },
       "name" : "Message Type Switch",
       "queueName" : null,
@@ -126,7 +141,7 @@
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "c8f100b0-c957-11ef-b2b3-b34052d40660"
+        "id" : "773b7382-d821-11ef-ba39-7b2634243828"
       },
       "name" : "Log RPC from Device",
       "queueName" : null,
@@ -149,7 +164,7 @@
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "c8f127c0-c957-11ef-b2b3-b34052d40660"
+        "id" : "773b9a90-d821-11ef-ba39-7b2634243828"
       },
       "name" : "Log Other",
       "queueName" : null,
@@ -170,7 +185,7 @@
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "c8f175e0-c957-11ef-b2b3-b34052d40660"
+        "id" : "773bc1a0-d821-11ef-ba39-7b2634243828"
       },
       "name" : "RPC Call Request",
       "queueName" : null,
@@ -187,13 +202,13 @@
         "persistAlarmRulesState" : false,
         "fetchAlarmRulesStateOnStart" : false
       },
-      "configurationVersion" : 0,
+      "configurationVersion" : 1,
       "createdTime" : 0,
       "debugSettings" : null,
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "c8f1c400-c957-11ef-b2b3-b34052d40660"
+        "id" : "773bc1a1-d821-11ef-ba39-7b2634243828"
       },
       "name" : "Device Profile Node",
       "queueName" : null,

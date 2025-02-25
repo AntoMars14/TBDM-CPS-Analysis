@@ -3,7 +3,10 @@
   "entity" : {
     "alias" : "gateway_widgets",
     "description" : "Widgets to manage ThingsBoard IoT Gateway instances.",
-    "externalId" : null,
+    "externalId" : {
+      "entityType" : "WIDGETS_BUNDLE",
+      "id" : "ead1eac0-c95a-11ef-93b5-9996823309a2"
+    },
     "id" : {
       "entityType" : "WIDGETS_BUNDLE",
       "id" : "ead1eac0-c95a-11ef-93b5-9996823309a2"

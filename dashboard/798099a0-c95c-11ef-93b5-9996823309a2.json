@@ -6552,8 +6552,11 @@
     },
     "name" : "ThingsBoard IoT Gateways",
     "resources" : null,
-    "assignedCustomers" : null,
-    "externalId" : null,
+    "assignedCustomers" : [ ],
+    "externalId" : {
+      "entityType" : "DASHBOARD",
+      "id" : "798099a0-c95c-11ef-93b5-9996823309a2"
+    },
     "id" : {
       "entityType" : "DASHBOARD",
       "id" : "798099a0-c95c-11ef-93b5-9996823309a2"

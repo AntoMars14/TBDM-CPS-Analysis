@@ -17,7 +17,10 @@
       }
     },
     "etag" : "9cda508ec592bb8e0bd624900fb2329674775200c0503a2312c17615dc086602",
-    "externalId" : null,
+    "externalId" : {
+      "entityType" : "TB_RESOURCE",
+      "id" : "0e01ca60-c95b-11ef-93b5-9996823309a2"
+    },
     "fileName" : "gateway-dashboard.png",
     "id" : {
       "entityType" : "TB_RESOURCE",

@@ -1111,8 +1111,11 @@
     },
     "name" : "Rule Engine Statistics",
     "resources" : null,
-    "assignedCustomers" : null,
-    "externalId" : null,
+    "assignedCustomers" : [ ],
+    "externalId" : {
+      "entityType" : "DASHBOARD",
+      "id" : "c9d60980-c957-11ef-b2b3-b34052d40660"
+    },
     "id" : {
       "entityType" : "DASHBOARD",
       "id" : "c9d60980-c957-11ef-b2b3-b34052d40660"
